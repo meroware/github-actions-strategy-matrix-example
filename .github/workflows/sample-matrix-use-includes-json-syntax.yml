@@ -1,12 +1,21 @@
 name: Sample Run Include Syntax Json Format
 on: push
-env: 
-  MATRIX_CONFIG: '{"includes": { "run":["run1","run2"]} }'
 jobs:
   job1:
     runs-on: ubuntu-latest
+    outputs:
+       matrix: ${{ steps.setmatrix.outputs.matrix }}
+    steps:
+      - name: Set Dynamic Matrix
+        id: setmatrix
+        run: |
+           matrixStringifiedObject='{"includes": { "run":["run1","run2"]} }'
+           echo "::set-output name=matrix::$matrixStringifiedObject"
+  job2:
+    needs: job1
+    runs-on: ubuntu-latest
     strategy:
-      matrix: ${{ fromJson(MATRIX_CONFIG) }}
+      matrix: ${{ fromJson(needs.job1.outputs.matrix) }}
     steps:
     - run: echo Run ${{ matrix.run }}
     - run: date
