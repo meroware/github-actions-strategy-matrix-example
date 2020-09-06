@@ -7,10 +7,6 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix: ${{fromJson(env.matrixConfig)}}
-        run: ['run1', 'run2']
-        include:
-          - run: 'run3'
-
     steps:
     - run: echo Run ${{ matrix.run }}
     - run: date
