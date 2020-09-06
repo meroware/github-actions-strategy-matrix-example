@@ -5,7 +5,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix: 
-        run: ['run1', 'run2', 'run3']
+        run: ['run1', 'run2']
     steps:
     - run: echo Run ${{ matrix.run }}
     - run: sleep 1

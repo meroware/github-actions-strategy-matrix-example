@@ -11,3 +11,4 @@ jobs:
     - run: echo Run ${{ matrix.run }}
     - run: sleep 1
     - run: date
+    - run: sleep 5 # Sleep so that we can see a difference in timestamp on the last run
