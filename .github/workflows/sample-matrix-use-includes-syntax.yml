@@ -1,0 +1,17 @@
+name: Sample Run Include Syntax
+on: push
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    strategy:
+      max-parallel: 2
+      matrix: 
+        run: ['run1', 'run2']
+        include:
+          - run: 'run3'
+
+    steps:
+    - run: echo Run ${{ matrix.run }}
+    - run: date
+    - run: sleep 5 # Sleep so that we can see a difference in timestamp on the last run
+    - run: date

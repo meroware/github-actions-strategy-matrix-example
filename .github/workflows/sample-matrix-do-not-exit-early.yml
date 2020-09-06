@@ -1,4 +1,4 @@
-name: Sample Should Fail All Runs
+name: Sample Should Fail Run 1 Only
 on: push
 jobs:
   job:
