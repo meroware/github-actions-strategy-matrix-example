@@ -1,7 +1,7 @@
 name: Sample Run Include Syntax Json Format
 on: push
 env: 
-  matrixConfig: {"includes": { "run":["run1","run2"]} }
+  matrixConfig: '{"includes": { "run":["run1","run2"]} }'
 jobs:
   job1:
     runs-on: ubuntu-latest
