@@ -1,12 +1,12 @@
 name: Sample Run Include Syntax Json Format
 on: push
 env: 
-  matrixConfig: '{"includes": { "run":["run1","run2"]} }'
+  MATRIX_CONFIG: '{"includes": { "run":["run1","run2"]} }'
 jobs:
   job1:
     runs-on: ubuntu-latest
     strategy:
-      matrix: ${{ env.matrixConfig }}
+      matrix: ${{ fromJson(MATRIX_CONFIG) }}
     steps:
     - run: echo Run ${{ matrix.run }}
     - run: date
