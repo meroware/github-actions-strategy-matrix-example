@@ -1,0 +1,13 @@
+name: Sample Run Max 2 Jobs In Parallel
+on: push
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    strategy:
+      max-parallel: 2
+      matrix: 
+        run: ['run1', 'run2', 'run3']
+    steps:
+    - run: echo Run ${{ matrix.run }}
+    - run: sleep 1
+    - run: date

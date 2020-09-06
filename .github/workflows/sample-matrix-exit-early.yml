@@ -1,0 +1,15 @@
+name: Sample Should Fail All Runs
+on: push
+jobs:
+  job:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: true
+      matrix: 
+        run: ['run1', 'run2', 'run3']
+    steps:
+    - run: echo Run ${{ matrix.run }} 
+    - name: Exit early if matrix run is run1
+      run: '[ ${{ maxtrix.run }} == "run1" ] && exit 1'
+    - run: sleep 2 # Sleep to make sure all process that don't match above check don't finish before the one that will exit
+    - run: date
