@@ -1,5 +1,7 @@
 name: Sample Run Max 2 Jobs In Parallel
 on: push
+   branch: 
+      - candy
 jobs:
   job1:
     runs-on: ubuntu-latest
