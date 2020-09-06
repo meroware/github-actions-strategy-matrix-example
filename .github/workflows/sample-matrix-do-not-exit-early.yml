@@ -1,7 +1,8 @@
 name: Sample Should Fail Run 1 Only
 on: push
-   branch: 
-      - candy
+   push:
+      branch: 
+       - candy
 jobs:
   job:
     runs-on: ubuntu-latest

@@ -1,7 +1,8 @@
 name: Sample Matrix Parallel
 on: push
-   branch: 
-      - candy
+   push:
+      branch: 
+       - candy
 jobs:
   job:
     runs-on: ubuntu-latest

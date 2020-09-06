@@ -1,7 +1,8 @@
 name: Sample Run Include Syntax
 on: push
-   branch: 
-      - candy
+   push:
+      branch: 
+       - candy
 jobs:
   job1:
     runs-on: ubuntu-latest
