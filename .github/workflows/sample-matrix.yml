@@ -8,5 +8,4 @@ jobs:
         run: ['run1', 'run2']
     steps:
     - run: echo Run ${{ matrix.run }}
-    - run: sleep 1
     - run: date
