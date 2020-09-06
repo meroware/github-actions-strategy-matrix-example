@@ -1,6 +1,5 @@
 name: Sample Run Include Syntax
 on: push
-   push:
 jobs:
   job1:
     runs-on: ubuntu-latest

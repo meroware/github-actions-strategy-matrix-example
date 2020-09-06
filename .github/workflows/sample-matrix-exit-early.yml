@@ -1,6 +1,5 @@
 name: Sample Should Fail All Runs
 on: push
-   push:
 jobs:
   job:
     runs-on: ubuntu-latest
