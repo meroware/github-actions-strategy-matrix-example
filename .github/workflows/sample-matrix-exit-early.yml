@@ -4,7 +4,6 @@ jobs:
   job:
     runs-on: ubuntu-latest
     strategy:
-      fail-fast: true
       matrix: 
         run: ['run1', 'run2']
     steps:
