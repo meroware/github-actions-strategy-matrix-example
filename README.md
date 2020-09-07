@@ -2,6 +2,8 @@
 
 > Provides examples on different ways to use strategy matrix in github actions
 
+[![Strategy Matrix Walkthrough](https://img.youtube.com/vi/z_fjpPbaAgw/0.jpg)](https://www.youtube.com/watch?v=z_fjpPbaAgw)
+
 ![Matrix run Diagram](./assets/matrix-run-diagram.png)
 
 ## Workflow Examples
