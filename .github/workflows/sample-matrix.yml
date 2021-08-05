@@ -17,7 +17,5 @@ jobs:
       id: list
       with:
           token: ${{secrets.GITHUB_TOKEN}}
-          labels: '["WFR"]'
-          skip_hour: '240'
     - name: output
-      run: echo list PRs '${{ steps.list.outputs.pulls }}'
+      run: echo list PRs '${{ steps.list.outputs.prs }}'
