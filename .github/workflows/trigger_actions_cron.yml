@@ -1,7 +1,5 @@
 name: Sample Run Include Syntax Json Format
-on:
-   schedule:
-       - cron: '0 19 * * 5'
+on: push
 jobs:
   job1:
     runs-on: ubuntu-latest
@@ -26,4 +24,18 @@ jobs:
     strategy:
       matrix: ${{ fromJson(needs.job1.outputs.matrix) }}
     steps:
+      - uses: actions/checkout@v2
       - run: echo Run11 ${{ matrix.slugref }} ${{ matrix.ref }} ${{ matrix.url }}
+      - uses: convictional/trigger-workflow-and-wait@v1.3.0
+        with:
+           owner: michaelm-clearpoint
+           repo: github-actions-strategy-matrix-example
+           github_token: ${{ secrets.GITHUB_TOKEN }}
+           workflow_file_name: pr_action.yml
+           ref: feature/test1
+           wait_interval: 10
+           inputs: '{}'
+           propagate_failure: false
+           trigger_workflow: true
+           wait_workflow: true
+
