@@ -3249,7 +3249,7 @@ const github = __importStar(__webpack_require__(469));
 function run() {
     return __awaiter(this, void 0, void 0, function* () {
         try {
-            const token = core.getInput('repo-token');
+            const token = core.getInput('token');
             const repoOwner = github.context.repo.owner;
             const repo = github.context.repo.repo;
             const octokit = new github.GitHub(token);
