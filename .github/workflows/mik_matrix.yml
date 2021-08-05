@@ -1,23 +1,31 @@
-name: Sample Run Include Syntax Json Format
+name: Dorny paths filter test
 on: push
+
 jobs:
-  job1:
+  tests:
     runs-on: ubuntu-latest
-    outputs:
-       matrix: ${{ steps.setmatrix.outputs.matrix }}
     steps:
-      - name: Set Dynamic Matrix
-        id: setmatrix
-        run: |
-           matrixStringifiedObject="{\"include\":[{\"run\":\"run1\"},{\"run\":\"run2\"}]}"
-           echo "::set-output name=matrix::$matrixStringifiedObject"
-  job2:
-    needs: job1
-    runs-on: ubuntu-latest
-    strategy:
-      matrix: ${{ fromJson(needs.job1.outputs.matrix) }}
-    steps:
-    - run: echo Run ${{ matrix.run }}
-    - run: date
-    - run: sleep 1
-    - run: date
+      - uses: actions/checkout@v2
+      - uses: dorny/paths-filter@v2
+        id: filter
+        with:
+          filters: |
+            backend:
+              - 'src/services/**'
+            frontend:
+              - 'src/ui/**'
+
+      # run only if 'backend' files were changed
+      - name: backend tests
+        if: steps.filter.outputs.backend == 'true'
+        run: echo backend OK
+
+      # run only if 'frontend' files were changed
+      - name: frontend tests
+        if: steps.filter.outputs.frontend == 'true'
+        run: echo frontend OK
+
+      # run if 'backend' or 'frontend' files were changed
+      - name: e2e tests
+        if: steps.filter.outputs.backend == 'true' || steps.filter.outputs.frontend == 'true'
+        run: echo frontend or backend OK
