@@ -10,6 +10,8 @@ jobs:
     - run: echo Run ${{ matrix.run }}
     - run: date
     
+    - uses: actions/checkout@master
+    
     - name: List all pull requests
       uses: ./.github/actions/list-pull-requests
       id: list
