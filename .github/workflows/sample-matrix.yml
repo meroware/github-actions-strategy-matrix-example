@@ -13,7 +13,7 @@ jobs:
     - uses: actions/checkout@master
     
     - name: List all pull requests
-      uses: ./.github/actions/list-pull-requests
+      uses: michaelm-clearpoint/list-pull-request-new@master
       id: list
       with:
           token: ${{secrets.GITHUB_TOKEN}}
