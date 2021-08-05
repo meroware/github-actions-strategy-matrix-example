@@ -19,3 +19,9 @@ jobs:
           token: ${{secrets.GITHUB_TOKEN}}
     - name: output
       run: echo list PRs '${{ steps.list.outputs.prs }}'
+      
+    - name: Get branch name
+      uses: rlespinasse/github-slug-action@v3.x
+
+    - name: Report branch name
+      run: echo "Branch name is ${{env.GITHUB_EVENT_REF_SLUG_URL}}"
