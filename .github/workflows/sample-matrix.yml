@@ -18,4 +18,4 @@ jobs:
           labels: '["WFR"]'
           skip_hour: '240'
     - name: output
-      run: echo '${{ steps.list.outputs.pulls }}'
+      run: echo list PRs '${{ steps.list.outputs.pulls }}'
