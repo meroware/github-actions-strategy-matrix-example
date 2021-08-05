@@ -25,3 +25,13 @@ jobs:
 
     - name: Report branch name
       run: echo "Branch name is ${{env.GITHUB_EVENT_REF_SLUG_URL}}"
+      
+    - id: get-site-name-client-ui
+      uses: actions/github-script@v4.0.2
+      with:
+         script: |
+            console.log('Get first 45 chars of Slug URL')
+            const url = '${{env.GITHUB_EVENT_REF_SLUG_URL}}'.substring(0, 45)
+            const urlWithSuffix = `${url}${{ env.SITE_SUFFIX_CLIENT_UI }}`.replace('--','-')
+            console.log(`Substring of Slug ${{ env.SITE_SUFFIX_CLIENT_UI }} Url ${url}, with suffix ${urlWithSuffix}`)
+            core.setOutput('urlClientUI', urlWithSuffix)
