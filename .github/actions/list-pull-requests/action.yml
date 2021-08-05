@@ -1,24 +1,16 @@
-name: 'List Pull Requests'
-description: 'list and put output pull requests'
-branding:
-  icon: 'bell'  
-  color: 'yellow'
+name: 'list pul requests'
+description: 'list pull requests.'
+author: 'mike'
 inputs:
   token:
-    description: 'github token'
+    description: 'The GITHUB_TOKEN used to authenticate to the current repository'
     required: true
-    default: ''
-  labels:
-    description: 'require labels to list (JSON array string)'
-    required: false
-    default: '[ "WFR" ]'
-  skip_hour:
-    description: 'Pull requests within this hour will not be listed'
-    required: true
-    default: '24'
 outputs:
-  result:
-    description: 'pull request string'
+  prs:
+    description: 'The URL of the GitHub release that was drafted'
 runs:
   using: 'node12'
   main: 'index.js'
+branding:
+  color: orange
+  icon: tag
