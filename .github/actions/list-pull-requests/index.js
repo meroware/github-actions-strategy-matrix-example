@@ -6053,7 +6053,7 @@ function setOutput(pull) {
 var now = Date.now();
 var prom = pullRequests(repoOwner, repo);
 prom.then(function (pulls) {
-    var claim = pulls.data.filter(function (p) { return filterLabel(p.labels, labels) && filterTime(p, now); });
+    var claim = pulls.data;
     setOutput(claim);
 });
 
