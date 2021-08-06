@@ -3253,12 +3253,14 @@ function run() {
             const repoOwner = github.context.repo.owner;
             const repo = github.context.repo.repo;
             core.info(repoOwner);
+            core.info(repo);
             const octokit = new github.GitHub(token);
             const response = yield octokit.pulls.list({
                 owner: repoOwner,
                 repo: repo
             });
-            core.setOutput('prs', JSON.stringify(response.data[0]));
+            const pulls = response.data.map(a => ({ ref: a.head.ref }));
+            core.setOutput('prs', JSON.stringify(pulls));
         }
         catch (error) {
             core.setFailed(error.message);
