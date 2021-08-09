@@ -1,5 +1,6 @@
-name: Sample Run Include Syntax Json Format
+name: Matrix sample mike
 on:
+   push:
    schedule:
        - cron: '0 19 * * 5'
 jobs:
@@ -26,4 +27,4 @@ jobs:
     strategy:
       matrix: ${{ fromJson(needs.job1.outputs.matrix) }}
     steps:
-      - run: echo Run11 ${{ matrix.slugref }} ${{ matrix.ref }} ${{ matrix.url }}
+      - run: echo Run11 label contains WFR ${{ contains(matrix.labels, 'WFR') }}  ${{ matrix.slugref }} ${{ matrix.ref }} ${{ matrix.url }}
